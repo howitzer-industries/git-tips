@@ -17,9 +17,14 @@
 -   Beware of discarding hunks in SourceTree when you have the line endings set up to auto-convert from Windows/Mac to Unix in the repo...it'll replace all the other line endings in your file with Unix ones and mess up your diff. I prefer to stage hunks when possible then discard the rest after the commit.
 
 ##.NET
--   For your NuGet packages, I've found it easier to just ignore the local packages folder and just rely on NuGet's package restore to replace them on build environments and other developer's machines...it does it automatically on build in VS. To ignore the local copies without missing the `repositories.config` file, add a `.gitignore` file with the following contents in `{solution_root}\packages`.
+-   For your NuGet packages, I've found it easier to just ignore the local packages folder and use NuGet's package restore to replace them on build environments and other developer's machines. To ignore the local copies without missing the `repositories.config` file, add a `.gitignore` file with the following contents in `{solution_root}\packages`.
 ```
 *
 !.gitignore
 !repositories.config
+```
+-   New versions of Visual Studio will automatically run `nuget restore` to get the new packages, but AppVeyor requires a pre-build script to call it. To configure that, add `nuget restore` to your pre-build script, either through the interface or in `appveyor.yml`:
+```
+before_build:
+  - nuget restore
 ```
