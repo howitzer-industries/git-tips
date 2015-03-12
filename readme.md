@@ -23,8 +23,14 @@
 !.gitignore
 !repositories.config
 ```
--   New versions of Visual Studio will automatically run `nuget restore` to get the new packages, but AppVeyor requires a pre-build script to call it. To configure that, add `nuget restore` to your pre-build script, either through the interface or in `appveyor.yml`:
+-   New versions of Visual Studio will automatically run `nuget restore` to get the new packages, but AppVeyor requires a pre-build script to call it. To configure that, add `nuget restore` to your pre-build script, either through the interface or in `appveyor.yml` to something like this:
 ```yml
+environment:
+  solution_file: folder\mysolution.sln
+
+build:
+  project: $(solution_file)
+
 before_build:
-  - nuget restore
+  - nuget restore %solution_file%
 ```
