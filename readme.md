@@ -13,7 +13,7 @@
 ```
 
 ## SourceTree
--   Publishing a new repo to GitHub from SourceTree is a bit of a pain. I prefer to create the repo in SourceTree then publish it using the GitHub client.
+-   Publishing a new repo to GitHub from SourceTree is a bit of a pain. I prefer to create and publish the repo in the GitHub client and then add it to SourceTree. This way you get the automatic .gitignore info.
 -   Beware of discarding hunks in SourceTree when you have the line endings set up to auto-convert from Windows/Mac to Unix in the repo...it'll replace all the other line endings in your file with Unix ones and mess up your diff. I prefer to stage hunks when possible then discard the rest after the commit.
 
 ##.NET
