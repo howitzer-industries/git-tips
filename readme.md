@@ -34,3 +34,18 @@ build:
 before_build:
   - nuget restore %solution_file%
 ```
+
+## svn2git
+`svn2git` is a utility to pull from an SVN repository and create a git repo from the history. The following command can be used to mirror a folder in an SVN repo to its own git repo.
+
+```
+svn2git https://my.svn.server/svn/repo_name/trunk --no-minimize-url --trunk {name of the folder} --nobranches --notags --username {mirroring username} --authors ~/svn_authors.txt
+```
+
+Create a file matching the SVN users to git emails at `~/svn_authors.txt` in the format `{svn username} = {git full name} <{git email}>`
+
+```
+first.user = First User <first.user@example.com>
+second.person = Second User <second.user@example.com>
+alsothisperson = Also This Person <otherguy@otherexample.com>
+```
