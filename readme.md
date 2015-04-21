@@ -35,6 +35,9 @@ before_build:
   - nuget restore %solution_file%
 ```
 
+## Git Flow
+Git flow may break locally if you delete one of the branches it relies upon (`master`, for instance). It'll give you a message saying it's not initialized.
+
 ## svn2git
 `svn2git` is a utility to pull from an SVN repository and create a git repo from the history. The following command can be used to mirror a folder in an SVN repo to its own git repo.
 
